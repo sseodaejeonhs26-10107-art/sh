@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>감정 날씨 · 나의 마음 기록</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header><a class="brand" href="index.html">🌤️ 감정 날씨</a><span>나를 돌아보는 작은 습관</span></header>
+  <main>
+    <section class="intro"><p class="eyebrow">MY LITTLE WEATHER DIARY</p><h1>오늘, 마음의 날씨는 어떤가요?</h1><p>맑은 날도, 비 오는 날도 괜찮아요. 지금의 마음을 남겨보세요.</p></section>
+    <p id="storage-warning" class="notice" role="alert" hidden></p>
+    <div class="layout">
+      <section class="card" aria-labelledby="form-title">
+        <h2 id="form-title">지금의 마음 기록하기</h2><p class="hint">가장 가까운 날씨 하나를 골라주세요.</p>
+        <form id="record-form">
+          <div id="weather-options" class="weather-options" role="group" aria-label="감정 날씨 선택"></div>
+          <label for="record-time">기록할 날짜와 시간</label><input id="record-time" type="datetime-local" required>
+          <label for="record-name">나만의 날씨 이름 <span class="hint">선택</span></label><input id="record-name" placeholder="비워두면 날씨 이름으로 저장해요">
+          <label for="record-memo">마음 한 조각 <span class="hint">선택</span></label><textarea id="record-memo" rows="4" placeholder="무슨 일이 있었나요? 한 줄도, 긴 이야기도 좋아요."></textarea>
+          <div class="actions"><button class="primary" id="save-button" type="submit">마음 기록하기</button><button id="cancel-edit" type="button" hidden>수정 취소</button></div>
+        </form>
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+        <section id="activities" class="activities" hidden><h3>잠깐, 나를 위한 시간</h3><p class="hint">지금 하고 싶은 활동을 하나 골라보세요.</p><div id="activity-options" class="chips"></div><p id="activity-result" role="status"></p></section>
+        <details><summary>나만의 감정과 날씨 연결</summary><p class="hint">각 날씨가 나에게 어떤 감정인지 바꿀 수 있어요.</p><form id="mapping-form"><div id="mapping-fields"></div><button type="submit">감정 연결 저장</button></form></details>
+      </section>
+      <div class="right-column">
+        <section class="card" aria-labelledby="calendar-title">
+          <div class="section-heading"><h2 id="calendar-title">마음 달력</h2><button id="today" class="small" type="button">오늘</button></div>
+          <div class="month-nav"><button id="prev-month" type="button" aria-label="이전 달">‹</button><h3 id="month-label" aria-live="polite"></h3><button id="next-month" type="button" aria-label="다음 달">›</button></div>
+          <div class="weekdays" aria-hidden="true"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span></div>
+          <div id="calendar" class="calendar" role="group" aria-label="날짜를 선택하면 그날의 기록을 볼 수 있어요"></div>
+          <p class="hint calendar-note">날짜를 눌러 하루의 마음을 살펴보세요.</p>
+        </section>
+        <section class="card" aria-labelledby="summary-title"><h2 id="summary-title">이달의 마음 모아보기</h2><div id="monthly-summary"></div></section>
+      </div>
+    </div>
+    <section class="card diary" aria-labelledby="day-title"><div class="section-heading"><h2 id="day-title"></h2><span id="day-count" class="hint"></span></div><div id="records"></div></section>
+  </main>
+  <footer>나의 모든 날씨를, 있는 그대로. <span>기록은 이 브라우저에 저장됩니다.</span></footer>
+</body>
+</html>
